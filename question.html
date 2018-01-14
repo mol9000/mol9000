@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <script src="lib/jquery.upvote.js"></script>
+    <link href="lib/jquery.upvote.css" rel="stylesheet">
+
+    <title>Master of Lectures 9000</title>
+    <script src="model.js" type="text/javascript"></script>
+    <script src="nav.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">MOL9000</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="dropdown">
+                        Angemeldet als
+                        <a class="dropdown-toggle" type="button" data-toggle="dropdown" href="#">
+                            <span id="navUsernameLabel" data-bind="text: username"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Karma: 1005</a>
+                            <a class="dropdown-item" href="#">Veranstaltungen</a>
+                            <a class="dropdown-item" href="#">Meine Beiträge</a>
+                            <a class="dropdown-item" href="#">Favoriten</a>
+                            <a class="dropdown-item" href="#">Nachrichten</a>
+                            <hr>
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+        </nav>
+
+
+        <div class="row">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Startseite</a></li>
+                    <li class="breadcrumb-item"><a href="#">Grundlagen der theoretischen Informatik</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Was ist der Unterschied zwischen regulären und kontextsentiven Sprachen?</li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="row">
+            <div class="card col-12 border-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Was ist der Unterschied zwischen regulären und kontextsentiven Sprachen?</h5>
+                    <p class="card-text">Sunt ex incididunt consectetur do cillum enim nulla. Elit Lorem incididunt nulla cillum officia ea nulla
+                        dolore adipisicing. Ad non mollit qui mollit sit cillum dolor aute sint enim ad voluptate tempor
+                        aliquip. Amet qui pariatur velit labore labore. Anim do ad duis laboris elit occaecat duis consectetur
+                        eiusmod laboris duis cupidatat. Elit proident irure incididunt anim est. Elit sit ullamco adipisicing
+                        nisi anim eiusmod id eiusmod culpa consequat.</p>
+
+                    <p class="card-text">
+                        <small class="text-muted">von <a href="#">student123</a> &middot; 14.01.2018, 22:12 Uhr</small>
+                        &middot;
+                        <a href="#" class="underlined">Antworten</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3>Antworten</h3>
+
+        <div class="row">
+            <div class="card col-12 answer">
+                <div class="card-body">
+                    <p class="card-text">Sunt ex incididunt consectetur do cillum enim nulla. Elit Lorem incididunt nulla cillum officia ea nulla
+                        dolore adipisicing. Ad non mollit qui mollit sit cillum dolor aute sint enim ad voluptate tempor
+                        aliquip.</p>
+
+                    <p class="card-text">
+                        <small class="text-muted">von <a href="#">besserwisser</a> &middot; 14.01.2018, 22:12 Uhr</small>
+                        &middot;
+                        <a href="#" class="underlined">Kommentieren</a>
+                        <a href="#" class="underlined">Als Antwort wählen</a>
+                        <a href="#" class="underlined">Melden</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card col-11 offset-1 answer">
+                <div class="card-body">
+                    <p class="card-text">Sunt ex incididunt consectetur do cillum enim nulla. Elit Lorem incididunt nulla cillum officia ea nulla
+                        dolore adipisicing. Ad non mollit qui mollit sit cillum dolor aute sint enim ad voluptate tempor
+                        aliquip.</p>
+
+                    <p class="card-text">
+                        <small class="text-muted">von <a href="#">genie33</a> &middot; 14.01.2018, 22:12 Uhr</small>
+                        &middot;
+                        <a href="#" class="underlined">Kommentieren</a>
+                        <a href="#" class="underlined">Als Antwort wählen</a>
+                        <a href="#" class="underlined">Melden</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card col-11 offset-1 answer">
+                <div class="card-body">
+                    <p class="card-text">Sunt ex incididunt consectetur do cillum enim nulla. Elit Lorem incididunt nulla cillum officia ea nulla
+                        dolore adipisicing. Ad non mollit qui mollit sit cillum dolor aute sint enim ad voluptate tempor
+                        aliquip.</p>
+
+                    <p class="card-text">
+                        <small class="text-muted">von <a href="#">wollowitz</a> &middot; 14.01.2018, 22:12 Uhr</small>
+                        &middot;
+                        <a href="#" class="underlined">Kommentieren</a>
+                        <a href="#" class="underlined">Als Antwort wählen</a>
+                        <a href="#" class="underlined">Melden</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card col-12 answer">
+                <div class="card-body">
+                    <p class="card-text">Sunt ex incididunt consectetur do cillum enim nulla. Elit Lorem incididunt nulla cillum officia ea nulla
+                        dolore adipisicing. Ad non mollit qui mollit sit cillum dolor aute sint enim ad voluptate tempor
+                        aliquip.</p>
+
+                    <p class="card-text">
+                        <small class="text-muted">von <a href="#">sheldoncooper</a> &middot; 14.01.2018, 22:12 Uhr</small>
+                        &middot;
+                        <a href="#" class="underlined">Kommentieren</a>
+                        <a href="#" class="underlined">Als Antwort wählen</a>
+                        <a href="#" class="underlined">Melden</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

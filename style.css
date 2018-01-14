@@ -2,3 +2,21 @@
 	width: 32px;
 	height: 96px;
 }
+
+.breadcrumb {
+	margin-top: 40px !important,
+}
+
+.underlined {
+	text-decoration: underline;
+}
+
+hr {
+	margin-top: 20px;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.answer {
+	margin-top: 15px;
+}
