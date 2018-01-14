@@ -47,27 +47,15 @@
             </div>
         </nav>
         <div class="row">
-            <div class="dropdown col-sm">
 
 
                     <ul class="nav nav-tabs">
-                            <li class="active">
-                                    <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Meine Veranstaltungen
-                                    </button>
-
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-bind="foreach: courses">
-                                    <a class="dropdown-item" data-bind="text: name, click: selectCourse(name)" href="#"></a>
-                                </div></li>-->
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="tab" href="#starttab" aria-haspopup="true" aria-expanded="false">
-                                        Meine Veranstaltungen
-                                    </button>
+                            <li class="active" id="mainli"><a id="mainlink" data-toggle="tab" class=tab-pane href="#starttab">Veranstaltungen</a></li>
                             <li id="gt1" style="display:none">></li>
                             <li id="moduleli"  style="display:none"><a id="modulelink" data-toggle="tab" class=tab-pane href="#moduletab">"VERANSTALTUNGSTAB"</a></li>
                             <li style="display:none" id="gt2">></li>
                             <li  id="questionli" style="display:none"><a id="questionlink" data-toggle="tab" class=tab-pane href="#questiontab">"FRAGENTAB"</a></li>
                           </ul>
-            </div>
 
             <div class="input-group col-sm">
                 <input type="text" class="form-control" placeholder="Kursname" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -77,8 +65,22 @@
             </div>
         </div>
         <div id="tabs" class="tab-content">
+                <!--STARTTAB-->
                 <div id="starttab" class="tab-pane active">
                   <h3>Menu 1</h3><ul class="nav nav-pills">
+                      
+                        <li class="nav-item">
+                            <div class="dropdown col-sm">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Meine Veranstaltungen
+                            </button>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-bind="foreach: courses">
+                            <a class="dropdown-item" data-bind="text: name, click: selectCourse(name)" href="#"></a>
+                        </div>
+                        
+            </div>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Beliebt</a>
                         </li>
@@ -130,6 +132,7 @@
                         </div>
                     </div>
                 </div>
+                <!--MODULETAB-->
                 <div id="moduletab" class="tab-pane fade">
                   <h3>Fragen</h3>
                   
@@ -137,6 +140,7 @@
                         "Bitte hilf mir"-Frage, KLICK UM MICH ZU ÖFFNEN
                      </button>
                 </div>
+                <!--QUESTIONTAB-->
                 <div id="questiontab" class="tab-pane fade">
                   <h3>Bitte hilf mir</h3>
                   <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
