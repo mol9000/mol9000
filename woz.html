@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WoZ</title>
+<script type="text/javascript" src="woz.js"></script>
+</head>
+<body>
+
+<h1>Student Input Interface</h1>
+
+<form>
+  <input type="button" value="Create DB" id="create" onclick="createDB();"><br/>
+</form>
+<hr/>
+<form>
+  <!-- <span>Username: <input id="username"></span><br/>
+  <span>Passwort: <input id="password"></span><br/> -->
+  Benutzer auswählen:<br/>
+  <input type="radio" name="usertype" value="dozent" onclick="set('user');">Dozent<br/>
+  <input type="radio" name="usertype" value="student" onclick="set('user');">Student<br/>
+</form>
+<hr/>
+ <form>
+  Eine zufällige Veranstaltung mit Fragen und Antworten erstellen: <br/>
+  <input type="button" value="Erstellen" onclick="set('event');"><br/>
+
+</form>
+</body>
+</html>
