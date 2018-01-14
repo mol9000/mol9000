@@ -50,9 +50,8 @@
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Meine Veranstaltungen
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Programmieren 1</a>
-                    <a class="dropdown-item" href="#">Komplexität von Algorithmen</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-bind="foreach: courses">
+                    <a class="dropdown-item" data-bind="text: name, click: selectCourse(name)" href="#"></a>
                 </div>
             </div>
 
@@ -77,7 +76,7 @@
                 <a class="nav-link" href="#">Kontrovers</a>
             </li>
         </ul>
-        <div class="questions">
+        <div class="questions" data-bind="foreach: questions">
             <div class="question row">
                 <div class="card col-lg">
                     <div class="card-body">
@@ -86,20 +85,20 @@
                                 <div class="col-sm-1">
                                     <div class="upvote">
                                         <a class="upvote"></a>
-                                        <span class="count">4</span>
+                                        <span class="count" data-bind="text: score"></span>
                                         <a class="downvote"></a>
                                         <a class="star"></a>
                                     </div>
                                 </div>
                                 <div class="col-sm container">
                                     <div class="row">
-                                    Was ist SAT? <sup>in <a href="#">Komplexität von Algorithmen</a></sup>
+                                    <span data-bind="text: name"></span> <sup>in <a href="#" data-bind="text: course">Komplexität von Algorithmen</a></sup>
                                     </div>
                                     <div class="row">
                                     <div>
-                                        <a href="#">5 Antworten</a> |
-                                        <a href="#">Melden</a> |
-                                        von <a href="#">einerperson123</a>
+                                        <a href="#"><span data-bind="text: comments"></span> Antworten</a> |
+                <!-- lol -->            <a href="#">Melden</a> |
+                                        von <a href="#" data-bind="text: author"></a>
                                     </div>
                                     </div>
                                 </div>
@@ -111,4 +110,5 @@
         </div>
     </div>
 </body>
+
 </html>
