@@ -16,6 +16,7 @@
 
     <title>Master of Lectures 9000</title>
     <script src="model.js" type="text/javascript"></script>
+    <script src="nav.js" type="text/javascript"></script>
   </head>
   <body>
     <div class="container">
@@ -47,12 +48,25 @@
         </nav>
         <div class="row">
             <div class="dropdown col-sm">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Meine Veranstaltungen
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-bind="foreach: courses">
-                    <a class="dropdown-item" data-bind="text: name, click: selectCourse(name)" href="#"></a>
-                </div>
+
+
+                    <ul class="nav nav-tabs">
+                            <li class="active">
+                                    <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Meine Veranstaltungen
+                                    </button>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-bind="foreach: courses">
+                                    <a class="dropdown-item" data-bind="text: name, click: selectCourse(name)" href="#"></a>
+                                </div></li>-->
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="tab" href="#starttab" aria-haspopup="true" aria-expanded="false">
+                                        Meine Veranstaltungen
+                                    </button>
+                            <li id="gt1" style="display:none">></li>
+                            <li id="moduleli"  style="display:none"><a id="modulelink" data-toggle="tab" class=tab-pane href="#moduletab">"VERANSTALTUNGSTAB"</a></li>
+                            <li style="display:none" id="gt2">></li>
+                            <li  id="questionli" style="display:none"><a id="questionlink" data-toggle="tab" class=tab-pane href="#questiontab">"FRAGENTAB"</a></li>
+                          </ul>
             </div>
 
             <div class="input-group col-sm">
@@ -62,52 +76,74 @@
                 </div>
             </div>
         </div>
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Beliebt</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Neu</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Top</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Kontrovers</a>
-            </li>
-        </ul>
-        <div class="questions" data-bind="foreach: questions">
-            <div class="question row">
-                <div class="card col-lg">
-                    <div class="card-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-1">
-                                    <div class="upvote">
-                                        <a class="upvote"></a>
-                                        <span class="count" data-bind="text: score"></span>
-                                        <a class="downvote"></a>
-                                        <a class="star"></a>
-                                    </div>
-                                </div>
-                                <div class="col-sm container">
-                                    <div class="row">
-                                    <span data-bind="text: name"></span> <sup>in <a href="#" data-bind="text: course">Komplexität von Algorithmen</a></sup>
-                                    </div>
-                                    <div class="row">
-                                    <div>
-                                        <a href="#"><span data-bind="text: comments"></span> Antworten</a> |
-                <!-- lol -->            <a href="#">Melden</a> |
-                                        von <a href="#" data-bind="text: author"></a>
-                                    </div>
+        <div id="tabs" class="tab-content">
+                <div id="starttab" class="tab-pane active">
+                  <h3>Menu 1</h3><ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Beliebt</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Neu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Top</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Kontrovers</a>
+                        </li>
+                    </ul>
+                    <div>
+                            <button class="btn btn-secondary" type="button" onclick="gotoModule('heyo')" aria-haspopup="true" aria-expanded="false">
+                               "Heyo"-Veranstaltung, KLICK UM MICH ZU ÖFFNEN
+                            </button>
+                    </div>
+                    <div class="questions" data-bind="foreach: questions">
+                        <div class="question row">
+                            <div class="card col-lg">
+                                <div class="card-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-1">
+                                                <div class="upvote">
+                                                    <a class="upvote"></a>
+                                                    <span class="count" data-bind="text: score"></span>
+                                                    <a class="downvote"></a>
+                                                    <a class="star"></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm container">
+                                                <div class="row">
+                                                <span data-bind="text: name"></span> <sup>in <a href="#" data-bind="text: course">Komplexität von Algorithmen</a></sup>
+                                                </div>
+                                                <div class="row">
+                                                <div>
+                                                    <a href="#"><span data-bind="text: comments"></span> Antworten</a> |
+                            <!-- lol -->            <a href="#">Melden</a> |
+                                                    von <a href="#" data-bind="text: author"></a>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div id="moduletab" class="tab-pane fade">
+                  <h3>Fragen</h3>
+                  
+                  <button class="btn btn-secondary" type="button" onclick="gotoQuestion('heyo')" aria-haspopup="true" aria-expanded="false">
+                        "Bitte hilf mir"-Frage, KLICK UM MICH ZU ÖFFNEN
+                     </button>
+                </div>
+                <div id="questiontab" class="tab-pane fade">
+                  <h3>Bitte hilf mir</h3>
+                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                </div>
         </div>
+        
+        
     </div>
 </body>
 
