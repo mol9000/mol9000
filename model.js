@@ -41,7 +41,7 @@ var handlers = {
     // add further handlers here
 };
 
-
+var dbLastEventRev = null;
 var model = null;
 
 function setUser(response) {
@@ -53,9 +53,13 @@ function setUser(response) {
 }
 
 function setEvent(response) {
-	model.courses.removeAll();
-	model.questions.removeAll();
-	addCourse(response.name);
+	if(dbLastEventRev && dbLastEventRev === response._rev) {
+		return;
+	}
+	dbLastEventRev = response._rev;
+	if(!courseExists(response.name)) {
+		addCourse(response.name);
+	}
 	response.questions.forEach(q => {
 		addQuestion(q.title, q.description, q.user, response.name, q.answers, q.points);
 	})
@@ -67,6 +71,10 @@ function addCourse(name) {
 
 function deselectCourse() {
 	model.viewCourse(null);
+}
+
+function courseExists(name) {
+	return model.courses().some(x => x.name === name);
 }
 
 function selectCourse(name) {
