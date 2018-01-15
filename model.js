@@ -105,7 +105,7 @@ function addQuestion(name, description, author, course, comments, score) {
 
 var ViewModel = function() {
 	var self = this; // "this" context in javascript is a fucking joke
-	this.role = ko.observableArray("student");
+	this.role = ko.observable("student");
 	this.username = ko.observable("student123");
 	this.viewCourse = ko.observable(null); // null -> alle kurse. nicht null -> name vom momentanen kurs
 	this.viewQuestion = ko.observable(null);
@@ -131,7 +131,7 @@ var ViewModel = function() {
 		return visibleAnnouncements;
 	});
 	this.isLecturer = ko.pureComputed(function() {
-		return self.role() === 'lecturer';
+		return self.role() === 'dozent';
 	});
 };
 

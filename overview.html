@@ -118,9 +118,15 @@
                         <button type="button" class="btn btn-secondary col-sm-1">Abonniert</button>
                     </div>
                     <div class="questions" data-bind="template: {name: 'question-card-template', foreach: courseQuestions}"></div>
+                    <span data-bind="ifnot: isLecturer">
+                        <a class="btn btn-primary" href="newQuestion.html" role="button">Frage erstellen</a>
+                    </span>
                     <hr>
                     <h3>Wichtiges vom Dozenten</h3>
                     <div class="annoucements" data-bind="template: {name: 'announcement-card-template', foreach: courseAnnouncements}"></div>
+                    <span data-bind="if: isLecturer">
+                        <a class="btn btn-primary" href="newQuestion.html" role="button">Info erstellen</a>
+                    </span>
                 </div>
                 <!--QUESTIONTAB-->
                 <div id="questiontab" class="tab-pane fade" data-bind="if: viewQuestion">
@@ -180,12 +186,12 @@
                             <div class="row">
                             <div>
                                 <a href="#" data-bind="click: function() {selectQuestion($data)}"><span data-bind="text: comments().length"></span> Antworten</a> |
-        <!-- lol -->            <div data-bind="if: isLecturer">
+        <!-- lol -->            <span data-bind="if: model.isLecturer">
                                     <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Löschen</a>
-                                </div>
-                                <div data-bind="ifnot: isLecturer">
+                                </span>
+                                <span data-bind="ifnot: model.isLecturer">
                                     <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Melden</a>
-                                </div>
+                                </span>
                                 von <a href="#" data-bind="text: author"></a>
                             </div>
                             </div>
@@ -219,9 +225,9 @@
                                 <a href="#">4 Antworten</a>
                                 von <a href="#" data-bind="text: author"></a>
                             </div>
-                            <div data-bind="if: isLecturer">
+                            <span data-bind="if: model.isLecturer">
                                 <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Löschen</a>
-                            </div>
+                            </span>
                             </div>
                         </div>
                     </div>
@@ -272,14 +278,14 @@
                     <p class="card-text">
                         <small class="text-muted">von <a href="#" data-bind="text: user"></a> &middot; 14.01.2018, 22:12 Uhr</small>
                         &middot;
-                        <a href="#" class="underlined">Kommentieren</a>
-                        <a href="#" class="underlined">Als Antwort wählen</a>
-                        <div data-bind="if: isLecturer">
+                        <a href="#" class="underlined">Kommentieren</a> |
+                        <a href="#" class="underlined">Als Antwort wählen</a> |
+                        <span data-bind="if: model.isLecturer">
                             <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Löschen</a>
-                        </div>
-                        <div data-bind="ifnot: isLecturer">
+                        </span>
+                        <span data-bind="ifnot: model.isLecturer">
                             <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Melden</a>
-                        </div>
+                        </span>
                     </p>
                 </div>
             </div>
