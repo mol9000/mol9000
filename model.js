@@ -50,6 +50,7 @@ function setUser(response) {
 	} else {
 		model.username('drAllwissend');
 	}
+	model.role(response.type);
 }
 
 function setEvent(response) {
@@ -67,6 +68,8 @@ function setEvent(response) {
 
 function addCourse(name) {
 	model.courses.push({name: name});
+	var announcement = {course: name, author: 'drAllwissend', name: 'Themen für die Klausur', score: 100};
+	model.announcements.push(announcement);
 }
 
 function deselectCourse() {
@@ -102,6 +105,7 @@ function addQuestion(name, description, author, course, comments, score) {
 
 var ViewModel = function() {
 	var self = this; // "this" context in javascript is a fucking joke
+	this.role = ko.observableArray("student");
 	this.username = ko.observable("student123");
 	this.viewCourse = ko.observable(null); // null -> alle kurse. nicht null -> name vom momentanen kurs
 	this.viewQuestion = ko.observable(null);
@@ -115,7 +119,20 @@ var ViewModel = function() {
 			}
 		});
 		return visibleQuestions;
-	})
+	});
+	this.announcements = ko.observableArray();
+	this.courseAnnouncements = ko.pureComputed(function() {
+		var visibleAnnouncements = [];
+		self.announcements().forEach(a => {
+			if(a.course === self.viewCourse()) {
+				visibleAnnouncements.push(a);
+			}
+		});
+		return visibleAnnouncements;
+	});
+	this.isLecturer = ko.pureComputed(function() {
+		return self.role() === 'lecturer';
+	});
 };
 
 $(document).ready(function() {

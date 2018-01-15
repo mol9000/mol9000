@@ -80,7 +80,7 @@
                             <a class="dropdown-item" data-bind="text: name, click: function() {selectCourse(name)}" href="#"></a>
                         </div>
                         
-            </div>
+                </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Beliebt</a>
@@ -99,7 +99,28 @@
                 </div>
                 <!--MODULETAB-->
                 <div id="moduletab" class="tab-pane fade">
+                    <div class="row">
+                        <ul class="nav nav-pills col-sm-11">
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Beliebt</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Neu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Top</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Kontrovers</a>
+                            </li>
+                        </ul>
+                        <button type="button" class="btn btn-secondary col-sm-1">Abonniert</button>
+                    </div>
                     <div class="questions" data-bind="template: {name: 'question-card-template', foreach: courseQuestions}"></div>
+                    <hr>
+                    <h3>Wichtiges vom Dozenten</h3>
+                    <div class="annoucements" data-bind="template: {name: 'announcement-card-template', foreach: courseAnnouncements}"></div>
                 </div>
                 <!--QUESTIONTAB-->
                 <div id="questiontab" class="tab-pane fade" data-bind="if: viewQuestion">
@@ -111,6 +132,31 @@
         </div>
         
         
+    </div>
+    <!-- Antwort melden Modal -->
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Antwort melden</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            Bitte nennen Sie den Grund für die Meldung:
+    
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1"></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" autofocus></textarea>
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Melden</button>
+            </div>
+        </div>
+        </div>
     </div>
 </body>
 <script type="text/html" id="question-card-template">
@@ -134,8 +180,47 @@
                             <div class="row">
                             <div>
                                 <a href="#" data-bind="click: function() {selectQuestion($data)}"><span data-bind="text: comments().length"></span> Antworten</a> |
-        <!-- lol -->            <a href="#">Melden</a> |
+        <!-- lol -->            <div data-bind="if: isLecturer">
+                                    <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Löschen</a>
+                                </div>
+                                <div data-bind="ifnot: isLecturer">
+                                    <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Melden</a>
+                                </div>
                                 von <a href="#" data-bind="text: author"></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="announcement-card-template">
+    <div class="question row">
+        <div class="card col-lg">
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="upvote">
+                                <a class="upvote"></a>
+                                <span class="count" data-bind="text: score"></span>
+                                <a class="downvote"></a>
+                                <a class="star"></a>
+                            </div>
+                        </div>
+                        <div class="col-sm container">
+                            <div class="row">
+                            <span data-bind="text: name"></span> <sup>in <a href="#" data-bind="text: course, click: function() {selectCourse(course)}">Komplexität von Algorithmen</a></sup>
+                            </div>
+                            <div class="row">
+                            <div>
+                                <a href="#">4 Antworten</a>
+                                von <a href="#" data-bind="text: author"></a>
+                            </div>
+                            <div data-bind="if: isLecturer">
+                                <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Löschen</a>
                             </div>
                             </div>
                         </div>
@@ -189,7 +274,12 @@
                         &middot;
                         <a href="#" class="underlined">Kommentieren</a>
                         <a href="#" class="underlined">Als Antwort wählen</a>
-                        <a href="#" class="underlined">Melden</a>
+                        <div data-bind="if: isLecturer">
+                            <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Löschen</a>
+                        </div>
+                        <div data-bind="ifnot: isLecturer">
+                            <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Melden</a>
+                        </div>
                     </p>
                 </div>
             </div>
