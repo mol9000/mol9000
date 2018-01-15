@@ -9,7 +9,14 @@ function deselectCourse() {
 }
 
 function selectCourse(name) {
+	gotoModule(name);
 	model.viewCourse(name);
+}
+
+function selectQuestion(question) {
+	selectCourse(question.course);
+	gotoQuestion(question.name);
+	model.viewQuestion(question);
 }
 
 function addQuestion(name, author, course, comments, score) {
@@ -25,6 +32,7 @@ var ViewModel = function() {
 	var self = this; // "this" context in javascript is a fucking joke
 	this.username = ko.observable("student123");
 	this.viewCourse = ko.observable(null); // null -> alle kurse. nicht null -> name vom momentanen kurs
+	this.viewQuestion = ko.observable(null);
 	this.courses = ko.observableArray();
 	this.questions = ko.observableArray();
 	this.courseQuestions = ko.pureComputed(function() {
@@ -41,4 +49,7 @@ var ViewModel = function() {
 $(document).ready(function() {
 	model = new ViewModel();
 	ko.applyBindings(model);
+	addQuestion('Warum?', 'pupsgesicht24', 'Programmieren 3', 64, 128);
+	addCourse('Programmieren 3')
+	addCourse('Komplexität von Kaffee')
 })

@@ -1,20 +1,15 @@
-function gotoModule(id){
-    //server yadayada mit id
-    var text="Programmieren 1";
+function gotoModule(name){
     $("#gt1").show();
     $("#moduleli").show();
-    $("#modulelink").text(text);
+    $("#modulelink").text(name);
     $("#modulelink").click();
 
 }
-function gotoQuestion(id){
-    //server yadayada mit id
-    var text="Bitte hilf mir";
+function gotoQuestion(name){
     $("#gt2").show();
     $("#questionli").show();
-    $("#questionlink").text(text);
+    $("#questionlink").text(name);
     $("#questionlink").click();
-
 }
 
 $(function(){
