@@ -41,7 +41,7 @@
                             <a class="dropdown-item" href="#">Favoriten</a>
                             <a class="dropdown-item" href="#">Nachrichten</a>
                             <hr>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="login.html">Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -285,5 +285,31 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Antwort melden Modal -->
+  <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Antwort melden</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Bitte nennen Sie den Grund für die Meldung dieses Kommentars:
+    
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1"></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" autofocus></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Melden</button>
+            </div>
+          </div>
+        </div>
 </script>
 </html>
