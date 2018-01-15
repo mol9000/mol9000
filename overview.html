@@ -22,7 +22,7 @@
   <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">MOL9000</a>
+            <a class="navbar-brand" href="overview.html">MOL9000</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -102,11 +102,11 @@
                     <div class="questions" data-bind="template: {name: 'question-card-template', foreach: courseQuestions}"></div>
                 </div>
                 <!--QUESTIONTAB-->
-                <div id="questiontab" class="tab-pane fade">
-                    <div class="question-tab" data-bind="template: {name: 'question-tab-template', foreach: viewQuestion}"></div>
+                <div id="questiontab" class="tab-pane fade" data-bind="if: viewQuestion">
+                    <div class="question-tab" data-bind="template: {name: 'question-tab-template', data: viewQuestion}"></div>
                     <hr>
                     <h3>Antworten</h3>
-                    <div class="question-comment" data-bind="template: {name: 'question-comment-template'}"></div>
+                    <div class="question-comment" data-bind="template: {name: 'question-comment-template', foreach: (viewQuestion().comments)}"></div>
                 </div>
         </div>
         
@@ -133,7 +133,7 @@
                             </div>
                             <div class="row">
                             <div>
-                                <a href="#" data-bind="click: function() {selectQuestion($data)}"><span data-bind="text: comments"></span> Antworten</a> |
+                                <a href="#" data-bind="click: function() {selectQuestion($data)}"><span data-bind="text: comments().length"></span> Antworten</a> |
         <!-- lol -->            <a href="#">Melden</a> |
                                 von <a href="#" data-bind="text: author"></a>
                             </div>
@@ -159,7 +159,7 @@
                     <div class="col-sm-11">
                         <h5 class="card-title" data-bind="text: name"></h5>
             
-                        <p class="card-text">dfsd</p>
+                        <p class="card-text" data-bind="text: description"></p>
                         <p class="card-text">
                             <small class="text-muted">von <a href="#" data-bind="text: author"></a> &middot; 14.01.2018, 22:12 Uhr</small>
                             &middot;
@@ -178,22 +178,20 @@
                 <div class="col-sm-1">
                     <div class="upvote">
                         <a class="upvote"></a>
-                        <span class="count">INT</span>
+                        <span class="count" data-bind="text: points"></span>
                         <a class="downvote"></a>
                     </div>
                 </div>
                 <div class="col-sm-11">
-                    <p class="card-text">Sunt ex incididunt consectetur do cillum enim nulla. Elit Lorem incididunt nulla cillum officia ea nulla
-                    dolore adipisicing. Ad non mollit qui mollit sit cillum dolor aute sint enim ad voluptate tempor
-                    aliquip.</p>
+                    <p class="card-text" data-bind="text: text"></p>
+                    <p class="card-text">
+                        <small class="text-muted">von <a href="#" data-bind="text: user"></a> &middot; 14.01.2018, 22:12 Uhr</small>
+                        &middot;
+                        <a href="#" class="underlined">Kommentieren</a>
+                        <a href="#" class="underlined">Als Antwort wählen</a>
+                        <a href="#" class="underlined">Melden</a>
+                    </p>
                 </div>
-                <p class="card-text">
-                    <small class="text-muted">von <a href="#">besserwisser</a> &middot; 14.01.2018, 22:12 Uhr</small>
-                    &middot;
-                    <a href="#" class="underlined">Kommentieren</a>
-                    <a href="#" class="underlined">Als Antwort wählen</a>
-                    <a href="#" class="underlined">Melden</a>
-                </p>
             </div>
         </div>
     </div>

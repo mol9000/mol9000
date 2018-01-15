@@ -1,4 +1,65 @@
+var request = new XMLHttpRequest();
+
+request.onreadystatechange = function() {
+    // console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
+    // console.log(request.responseText);
+    if (request.readyState == 4) {
+        if (request.status == 200) {
+            var response = JSON.parse(request.responseText);
+            handlers[response._id](response);
+        }
+        if (request.status == 404) {
+            console.log("not found: " + request.responseText);
+        }
+    }
+};
+
+function get(variable) {
+    // console.log("get " + variable);
+    request.open("GET", dburl + variable, false);
+    request.send();
+}
+
+function update() {
+    for (var name in handlers) {
+        // console.log("updating " + name);
+        get(name);
+    }
+}
+
+// request updates at a fixed interval (ms)
+var intervalID = setInterval(update, 1000);
+
+///////////////////////////////////////////////////////////////////////////////
+// your code below
+
+var dbname = "gmci";
+var dburl = "http://127.0.0.1:5984/" + dbname + "/";
+var handlers = {
+    "event" : setEvent,
+    "user" : setUser
+    // add further handlers here
+};
+
+
 var model = null;
+
+function setUser(response) {
+	if(response.type === 'student') {
+		model.username('stud123');
+	} else {
+		model.username('drAllwissend');
+	}
+}
+
+function setEvent(response) {
+	model.courses.removeAll();
+	model.questions.removeAll();
+	addCourse(response.name);
+	response.questions.forEach(q => {
+		addQuestion(q.title, q.description, q.user, response.name, q.answers, q.points);
+	})
+}
 
 function addCourse(name) {
 	model.courses.push({name: name});
@@ -19,11 +80,14 @@ function selectQuestion(question) {
 	model.viewQuestion(question);
 }
 
-function addQuestion(name, author, course, comments, score) {
+function addQuestion(name, description, author, course, comments, score) {
+	var commentsArray = ko.observableArray();
+	comments.forEach(x => commentsArray.push(x));
 	var question = {name: name,
+					description: description,
 					author: author,
 					course: course,
-					comments: comments,
+					comments: commentsArray,
 					score: score};
 	model.questions.push(question);
 }
@@ -49,7 +113,4 @@ var ViewModel = function() {
 $(document).ready(function() {
 	model = new ViewModel();
 	ko.applyBindings(model);
-	addQuestion('Warum?', 'pupsgesicht24', 'Programmieren 3', 64, 128);
-	addCourse('Programmieren 3')
-	addCourse('Komplexität von Kaffee')
 })
