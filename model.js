@@ -93,6 +93,7 @@ function selectQuestion(question) {
 
 function addQuestion(name, description, author, course, comments, score) {
 	var commentsArray = ko.observableArray();
+	comments.sort((a, b) => b.points - a.points)
 	comments.forEach(x => commentsArray.push(x));
 	var question = {name: name,
 					description: description,
