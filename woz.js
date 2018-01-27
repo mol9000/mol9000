@@ -127,10 +127,27 @@ function setEvent(response) {
       {
         name: "Programmieren 1",
         questions: [
-          {title: "Wieso Postfix?", description: "Wiesoooo???", points: 5, user: "Student123",
-            answers: [{text: "Wieso nicht?", points: -2, user: "Student666"},
-                      {text: "Weil es sehr cool ist.", points: 10, user: "Dozent999"}]
-          }]
+        {
+            title: "Wieso Postfix?",
+            description: "Wiesoooo???",
+            points: 5, 
+            user: "Student123",
+            answers: [
+                {text: "Wieso nicht?", points: -2, user: "Student666"},
+                {text: "Weil es sehr cool ist.", points: 10, user: "Dozent999"}
+            ]
+        },
+        {
+            title: "Wieso C?",
+            description: "Wiesoooo???",
+            points: 5,
+            user: "StudentCpp",
+            answers:[
+                {text: "Wieso nicht?", points: -2, user: "Student666"},
+                {text: "Weil es sehr cool ist.", points: 10, user: "Dozent999"}
+            ]
+        }
+        ]
       },
       {
         name: "Komplexität von Algorithmen",

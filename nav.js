@@ -3,6 +3,7 @@ function gotoModule(name){
     $("#moduleli").show();
     $("#modulelink").text(name);
     $("#modulelink").click();
+    $("#modTitle").text(name);
 
 }
 function gotoQuestion(name){

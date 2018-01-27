@@ -21,7 +21,7 @@
   </head>
   <body>
     <div class="container">
-        <div class="row pb-4">
+        <div class="row mb-4">
             <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
                 <a class="navbar-brand" href="overview.html">MOL9000</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
                         <li class="dropdown">
                             Angemeldet als
                             <a class="dropdown-toggle" type="button" data-toggle="dropdown" href="#">
-                                <span id="navUsernameLabel" data-bind="text: username"></span>
+                                <span id="navUsernameLabel" class="mx-2" data-bind="text: username"></span>
                                 <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -49,7 +49,7 @@
                 </div>
             </nav>
         </div>
-        <div class="row pb-2">
+        <div class="row mb-2">
             <div class="bg-light mr-2">Navigation</div>
             <ul class="nav nav-tabs">
                 <li class="active" id="mainli"><a id="mainlink" data-toggle="tab" class=tab-pane href="#starttab">Veranstaltungen</a></li>
@@ -59,11 +59,11 @@
                 <li  id="questionli" style="display:none"><a id="questionlink" data-toggle="tab" class=tab-pane href="#questiontab">"FRAGENTAB"</a></li>
             </ul>
         </div>
-        <div class="row pb-4">
+        <div class="row mb-4">
             <div class="input-group">
-                <div class="dropdown pr-2">
+                <div class="dropdown mr-2">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Meine Veranstaltungen
+                            Abonnierte Veranstaltungen
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-bind="foreach: courses">
                             <a class="dropdown-item" data-bind="text: name, click: function() {selectCourse(name)}" href="#"></a>
@@ -75,11 +75,11 @@
                 </div>
             </div>
         </div>
-        <div class="pb-2">
+        <div class="mb-2">
             <div id="tabs" class="tab-content">
                     <!--STARTTAB-->
                     <div id="starttab" class="tab-pane active">
-                        <ul class="nav nav-tabs pb-2">
+                        <ul class="nav nav-tabs mb-2">
                             <li class="nav-item">
                             </li>
                             <li class="nav-item">
@@ -99,29 +99,29 @@
                     </div>
                     <!--MODULETAB-->
                     <div id="moduletab" class="tab-pane fade">
-                            <ul class="nav nav-tabs pb-2">
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#">Beliebt</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Neu</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Top</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Kontrovers</a>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-secondary">Abonniert</button>
-                        
+                    <h3 class="d-inline" id="modTitle"></h3><button type="button" class="d-inline btn btn-success ml-3 mb-3 btn-sm">Bereits Abonniert</button>
+                    
+                        <ul class="nav nav-tabs pb-2">
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Beliebt</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Neu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Top</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Kontrovers</a>
+                            </li>
+                        </ul>
                         <div class="questions" data-bind="template: {name: 'question-card-template', foreach: courseQuestions}"></div>
                         <span data-bind="ifnot: isLecturer">
-                            <a class="btn btn-primary" href="newQuestion.html" role="button">Frage erstellen</a>
+                            <a class="btn btn-primary mt-2" href="newQuestion.html" role="button">Frage erstellen</a>
                         </span>
                         <hr>
-                        <h3>Wichtiges vom Dozenten</h3>
+                        <h4>Wichtiges vom Dozenten</h4>
                         <div class="annoucements" data-bind="template: {name: 'announcement-card-template', foreach: courseAnnouncements}"></div>
                         <span data-bind="if: isLecturer">
                             <a class="btn btn-primary" href="newQuestion.html" role="button">Info erstellen</a>
