@@ -113,7 +113,7 @@ var dbname = "gmci";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
     "user" : setUser,
-    "event": setEvent
+    "events": setEvents
     // add further handlers here
 };
 
@@ -122,7 +122,7 @@ function setUser(response) {
     put(response, {"type" : type});
 }
 
-function setEvent(response) {
+function setEvents(response) {
     const events = [
       {
         name: "Programmieren 1",
@@ -166,5 +166,5 @@ function setEvent(response) {
           }]
       }
     ]
-    put(response, events[Math.floor((Math.random() * 3))]);
+    put(response, {"events": events});
 }

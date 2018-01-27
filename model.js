@@ -36,7 +36,7 @@ var intervalID = setInterval(update, 1000);
 var dbname = "gmci";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-    "event" : setEvent,
+    "events" : setEvents,
     "user" : setUser
     // add further handlers here
 };
@@ -53,17 +53,21 @@ function setUser(response) {
 	model.role(response.type);
 }
 
-function setEvent(response) {
+function setEvents(response) {
 	if(dbLastEventRev && dbLastEventRev === response._rev) {
 		return;
 	}
 	dbLastEventRev = response._rev;
-	if(!courseExists(response.name)) {
-		addCourse(response.name);
+	if(!courseExists(response.events)) {
+		response.events.forEach(course => {
+			addCourse(course.name);
+			course.questions.forEach(q => {
+				addQuestion(q.title, q.description, q.user, course.name, q.answers, q.points);
+			})
+		})
+		
 	}
-	response.questions.forEach(q => {
-		addQuestion(q.title, q.description, q.user, response.name, q.answers, q.points);
-	})
+
 }
 
 function addCourse(name) {
