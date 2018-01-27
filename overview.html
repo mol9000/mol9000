@@ -99,7 +99,7 @@
                     </div>
                     <!--MODULETAB-->
                     <div id="moduletab" class="tab-pane fade">
-                    <h3 class="d-inline" id="modTitle"></h3><button type="button" class="d-inline btn btn-success ml-3 mb-3 btn-sm">Bereits Abonniert</button>
+                        <h3 class="d-inline" id="modTitle"></h3><button type="button" class="d-inline btn btn-outline-success ml-3 mb-3 btn-sm">Abonniert</button>
                     
                         <ul class="nav nav-tabs pb-2">
                             </li>
@@ -118,13 +118,15 @@
                         </ul>
                         <div class="questions" data-bind="template: {name: 'question-card-template', foreach: courseQuestions}"></div>
                         <span data-bind="ifnot: isLecturer">
-                            <a class="btn btn-primary mt-2" href="newQuestion.html" role="button">Frage erstellen</a>
+                            <!-- <a class="btn btn-primary mt-2" href="newQuestion.html" role="button">Frage erstellen</a> -->
+                            <a href="#" class="btn btn-primary mt-2" data-toggle="modal" data-target="#questionModal">Frage erstellen</a>   
                         </span>
                         <hr>
                         <h4>Wichtiges vom Dozenten</h4>
                         <div class="annoucements" data-bind="template: {name: 'announcement-card-template', foreach: courseAnnouncements}"></div>
                         <span data-bind="if: isLecturer">
-                            <a class="btn btn-primary" href="newQuestion.html" role="button">Info erstellen</a>
+                            <!-- <a class="btn btn-primary mt-2" href="newQuestion.html" role="button">Info erstellen</a> -->
+                            <a href="#" class="btn btn-primary mt-2" data-toggle="modal" data-target="#questionModal">Info erstellen</a> 
                         </span>
                     </div>
                     <!--QUESTIONTAB-->
@@ -163,6 +165,40 @@
         </div>
         </div>
     </div>
+        <!-- Neue Frage/Info Modal -->
+        <div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <span data-bind="if: isLecturer">
+                        <h5 class="modal-title" id="exampleModalLabel">Info erstellen</h5>
+                    </span>
+                    <span data-bind="ifnot: isLecturer">
+                            <h5 class="modal-title" id="exampleModalLabel">Frage erstellen</h5>
+                        </span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        Titel:
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1"></label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" autofocus></textarea>
+                        </div>
+                        Beschreibung:
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1"></label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" autofocus></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Senden</button>
+                    </div>
+                </div>
+                </div>
+            </div>
 </body>
 <script type="text/html" id="question-card-template">
     <div class="question row">
@@ -225,7 +261,7 @@
                                 von <a href="#" data-bind="text: author"></a>
                             </div>
                             <span data-bind="if: model.isLecturer">
-                                <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Löschen</a>
+                                <a href="#" class="underlined ml-2" data-toggle="modal" data-target="#reportModal">Löschen</a>
                             </span>
                             </div>
                         </div>

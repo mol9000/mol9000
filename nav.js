@@ -11,6 +11,7 @@ function gotoQuestion(name){
     $("#questionli").show();
     $("#questionlink").text(name);
     $("#questionlink").click();
+    $("#modTitleQ").text(name);
 }
 
 $(function(){
