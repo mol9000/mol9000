@@ -98,12 +98,16 @@ function selectQuestion(question) {
 function addQuestion(name, description, author, course, comments, score) {
 	var commentsArray = ko.observableArray();
 	comments.sort((a, b) => b.points - a.points)
-	comments.forEach(x => commentsArray.push(x));
+	comments.forEach(x => {
+        x.badge = x.user.toLowerCase().includes('dozent')
+        commentsArray.push(x)
+    });
 	var question = {name: name,
 					description: description,
 					author: author,
 					course: course,
 					comments: commentsArray,
+					badge: commentsArray().some(x => x.badge),
 					score: score};
 	model.questions.push(question);
 }

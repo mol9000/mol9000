@@ -220,7 +220,8 @@
                             </div>
                             <div class="row">
                             <div>
-                                <a href="#" data-bind="click: function() {selectQuestion($data)}"><span data-bind="text: comments().length"></span> Antworten</a> |
+                                <a href="#" data-bind="click: function() {selectQuestion($data)}"><span data-bind="text: comments().length"></span> Antworten</a>
+                                <i data-bind="visible: badge" class="fa fa-graduation-cap" aria-hidden="true"></i> |
         <!-- lol -->            <span data-bind="if: model.isLecturer">
                                     <a href="#" class="underlined" data-toggle="modal" data-target="#reportModal">Löschen</a>
                                 </span>
@@ -311,7 +312,9 @@
                 <div class="col-sm-11">
                     <p class="card-text" data-bind="text: text"></p>
                     <p class="card-text">
-                        <small class="text-muted">von <a href="#" data-bind="text: user"></a> &middot; 14.01.2018, 22:12 Uhr</small>
+                        <small class="text-muted">von <a href="#" data-bind="text: user"></a>
+                        <i data-bind="visible: badge" class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        &middot; 14.01.2018, 22:12 Uhr</small>
                         &middot;
                         <a href="#" class="underlined">Kommentieren</a> |
                         <a href="#" class="underlined">Als Antwort wählen</a> |
