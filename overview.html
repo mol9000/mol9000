@@ -184,17 +184,17 @@
                         Titel:
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1"></label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" autofocus></textarea>
+                            <textarea id="modalQuestionTitle" class="form-control" id="exampleFormControlTextarea1" rows="1" autofocus></textarea>
                         </div>
                         Beschreibung:
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1"></label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" autofocus></textarea>
+                            <textarea id="modalQuestionText" class="form-control" id="exampleFormControlTextarea1" rows="5" autofocus></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Senden</button>
+                    <button type="button" data-bind="click: (function() {modalClickClick()})" class="btn btn-danger" data-dismiss="modal">Senden</button>
                     </div>
                 </div>
                 </div>

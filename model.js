@@ -1,30 +1,30 @@
 var request = new XMLHttpRequest();
 
 request.onreadystatechange = function() {
-    // console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
-    // console.log(request.responseText);
-    if (request.readyState == 4) {
-        if (request.status == 200) {
-            var response = JSON.parse(request.responseText);
-            handlers[response._id](response);
-        }
-        if (request.status == 404) {
-            console.log("not found: " + request.responseText);
-        }
-    }
+	// console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
+	// console.log(request.responseText);
+	if (request.readyState == 4) {
+		if (request.status == 200) {
+			var response = JSON.parse(request.responseText);
+			handlers[response._id](response);
+		}
+		if (request.status == 404) {
+			console.log("not found: " + request.responseText);
+		}
+	}
 };
 
 function get(variable) {
-    // console.log("get " + variable);
-    request.open("GET", dburl + variable, false);
-    request.send();
+	// console.log("get " + variable);
+	request.open("GET", dburl + variable, false);
+	request.send();
 }
 
 function update() {
-    for (var name in handlers) {
-        // console.log("updating " + name);
-        get(name);
-    }
+	for (var name in handlers) {
+		// console.log("updating " + name);
+		get(name);
+	}
 }
 
 // request updates at a fixed interval (ms)
@@ -36,9 +36,9 @@ var intervalID = setInterval(update, 1000);
 var dbname = "gmci";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-    "events" : setEvents,
-    "user" : setUser
-    // add further handlers here
+	"events" : setEvents,
+	"user" : setUser
+	// add further handlers here
 };
 
 var dbLastEventRev = null;
@@ -48,7 +48,7 @@ function setUser(response) {
 	if(response.type === 'student') {
 		model.username('stud123');
 	} else {
-		model.username('drAllwissend');
+		model.username('dozentAllwissend');
 	}
 	model.role(response.type);
 }
@@ -72,7 +72,7 @@ function setEvents(response) {
 
 function addCourse(name) {
 	model.courses.push({name: name});
-	var announcement = {course: name, author: 'drAllwissend', name: 'Themen für die Klausur', score: 100};
+	var announcement = {course: name, author: 'dozentAllwissend', name: 'Themen für die Klausur', score: 100};
 	model.announcements.push(announcement);
 }
 
@@ -97,11 +97,12 @@ function selectQuestion(question) {
 
 function addQuestion(name, description, author, course, comments, score) {
 	var commentsArray = ko.observableArray();
-	comments.sort((a, b) => b.points - a.points)
 	comments.forEach(x => {
-        x.badge = x.user.toLowerCase().includes('dozent')
-        commentsArray.push(x)
-    });
+		x.badge = x.user.toLowerCase().includes('dozent')
+		commentsArray.push(x)
+	});
+	commentsArray.sort((a, b) => b.points - a.points)
+	commentsArray.sort((a, b) => b.badge - a.badge) // this works because lol javascript
 	var question = {name: name,
 					description: description,
 					author: author,
@@ -110,6 +111,30 @@ function addQuestion(name, description, author, course, comments, score) {
 					badge: commentsArray().some(x => x.badge),
 					score: score};
 	model.questions.push(question);
+}
+
+function addQuestionFromModal() {
+	var question = {name: $("#modalQuestionTitle").val(),
+		description: $("#modalQuestionText").val(),
+		author: model.username(),
+		course: model.viewCourse(),
+		comments: ko.observableArray(),
+		badge: false,
+		score: 0};
+	model.questions.push(question);
+}
+
+function addAnnouncementFromModal() {
+	var announcement = {course: model.viewCourse(), author: 'dozentAllwissend', name: $("#modalQuestionTitle").val(), score: 0};
+	model.announcements.push(announcement);
+}
+
+function modalClickClick() {
+	if(model.role() === "student") {
+		addQuestionFromModal();
+	} else {
+		addAnnouncementFromModal();
+	}
 }
 
 var ViewModel = function() {

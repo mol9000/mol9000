@@ -134,7 +134,8 @@ function setEvents(response) {
             user: "Student123",
             answers: [
                 {text: "Wieso nicht?", points: -2, user: "Student666"},
-                {text: "Weil es sehr cool ist.", points: 10, user: "Dozent999"}
+                {text: "Weil es sehr cool ist.", points: 10, user: "Dozent999"},
+                {text: "Damit du kapierst was ein stack ist.", points: 25, user: "student65"}
             ]
         },
         {
@@ -154,7 +155,12 @@ function setEvents(response) {
         questions: [
           {title: "Was kommt in der KL dran?", description: "Welche Themen kommen in der Klausur dran? Nur die Sachen aus der Übung?", points: 15, user: "Student123",
             answers: [{text: "Ich schätze alles, also Vorlesung und Übung.", points: -2, user: "Student666"},
-                      {text: "Also alles aus der Vorlesung, Übung und aus meinem coolen Buch :)", points: 15, user: "DrDozent"}]
+                      {text: "Also alles aus der Vorlesung, Übung und aus meinem coolen Buch :)", points: 15, user: "DrDozent"},
+                      {text: "Yeah man, I tell ya what, man, that dang ol' internet, man, you just go in on there and point and click, talk about w-w-dot-w-com, mean you got the naked chicks on there, man, just go click, click, click, click, click, it's real easy, man.",
+                       points: 35, user: "boomhauer"}]
+          },
+          {title: "Ist das ein Pflichtfach?", description: "Muss man KVA machen oder kann man das auch lassen?", points: 10, user: "Student723",
+          answers: [{text: "Da musst du wohl durch.", points: 1, user: "Student2"}]
           }]
       },
       {
