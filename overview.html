@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
     <script src="lib/jquery.upvote.js"></script>
+    <script src="lib/jquery.autocomplete.min.js"></script>
     <link href="lib/jquery.upvote.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 
@@ -69,9 +70,8 @@
                             <a class="dropdown-item" data-bind="text: name, click: function() {selectCourse(name)}" href="#"></a>
                         </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Kursname" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button">Suchen</button>
+                <div id="searchfield">
+                   <input type="text" class="form-control biginput" placeholder="Kursname" id="autocomplete">
                 </div>
             </div>
         </div>

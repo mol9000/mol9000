@@ -14,6 +14,8 @@ request.onreadystatechange = function() {
 	}
 };
 
+
+
 function get(variable) {
 	// console.log("get " + variable);
 	request.open("GET", dburl + variable, false);
@@ -172,4 +174,23 @@ var ViewModel = function() {
 $(document).ready(function() {
 	model = new ViewModel();
 	ko.applyBindings(model);
+
+	var array = [
+		{ name : "Programmieren 1" },
+		{ name : "Programmieren 2" },
+		{ name : "Komplexität von Algorithmen" },
+		{ name : "Software-Projekt" },
+	]
+
+	var courses = $.map(array, function(item) {
+					return { value: item.name};
+				})
+
+	$('#autocomplete').autocomplete({ //TODO: on enter choose topmost course and always display ghost of topmost course in input body
+		lookup: courses,
+		onSelect: function (suggestion) {
+			console.log(suggestion)
+			selectCourse(suggestion.value)
+		}
+	  });
 })
